@@ -2,7 +2,7 @@
 
 CineQuery is a modern, multilingual movie discovery application that allows users to search for films using natural language and receive highly personalized, AI-driven recommendations based on top-rated Kaggle datasets and live the TMDB API. 
 
-## ✨ Key Features
+## Key Features
 
 - **Natural Language Querying**: Skip rigid filters. Type what you want (e.g., *"Spanish romantic comedies from the 1990s"*) and the built-in NLP engine will translate your intent into complex SQL statements instantly.
 - **Smart Recommendations**: A hybrid recommendation engine analyzes your "Favorite" movies to find semantic genre affinities and suggests hidden gems, leveraging both local datasets and the live TMDB catalog for the latest releases.
@@ -10,7 +10,7 @@ CineQuery is a modern, multilingual movie discovery application that allows user
 - **Dynamic Database Compilation**: Bootstraps an in-memory SQLite database from a local Kaggle dataset metadata file on startup, avoiding heavy local database management overhead.
 - **Premium UI/UX**: Built with React, Tailwind CSS, and Framer Motion for a sleek, dark-mode glassmorphic aesthetic.
 
-## 🛠 Tech Stack
+## Tech Stack
 
 ### Frontend
 - **React.js (Vite)**
@@ -25,13 +25,13 @@ CineQuery is a modern, multilingual movie discovery application that allows user
 - **OpenAI API** (used strictly as an NLP translation and semantic affinity engine)
 - **TMDb (The Movie Database) API** (for fetching posters, latest releases, and dynamic fallback data)
 
-## 🏗 Architecture & Design Decisions
+## Architecture & Design Decisions
 
 1. **Natural Language to SQL pipeline**: Rather than vector-embedding the entire movie catalog, the backend takes advantage of the highly-structured metadata stored in our Kaggle dataset. User queries are translated via an NLP engine into normalized `SELECT` statements, mapping broad requests into precise SQL `WHERE` clauses.
 2. **Hybrid Recommendation Engine**: When finding similar movies, the algorithm analyzes the user's favorites array. If a user favorites a brand new movie (e.g., late 2024), the system automatically performs a fallback lookup via the live TMDB API to construct the semantic profile, then queries the local database for historical matches, ensuring zero gaps in the recommendation timeline.
 3. **In-Memory SQLite**: Designed for speed and zero-friction deployments. The `.csv` data is parsed and loaded into an in-memory SQL database purely during the Node instance runtime.
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js (v18+ recommended)
