@@ -1,13 +1,11 @@
+import '../loadEnv.js';
 import axios from 'axios';
-import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import Movie from '../models/Movie.js';
 
-// Ensure env loads from server/.env even if cwd is repo root
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-dotenv.config({ path: path.join(__dirname, '../../.env') });
 
 const BASE_URL = 'https://api.themoviedb.org/3';
 

@@ -1,4 +1,5 @@
 import RecommendationService from '../services/RecommendationService.js';
+import { sendError } from '../safeError.js';
 
 export async function getRecommendations(req, res) {
   try {
@@ -31,9 +32,7 @@ export async function getRecommendations(req, res) {
     return res.json({ movies });
   } catch (err) {
     console.error('Recommendation Controller Error:', err);
-    const status = err?.status || 500;
-    const message = err?.message || 'Internal Server Error';
-    return res.status(status).json({ error: message });
+    return sendError(res, err, err?.status || 500);
   }
 }
 
@@ -68,8 +67,6 @@ export async function getAiRecommendations(req, res) {
     return res.json({ movies });
   } catch (err) {
     console.error('AI Recommendation Controller Error:', err);
-    const status = err?.status || 500;
-    const message = err?.message || 'Internal Server Error';
-    return res.status(status).json({ error: message });
+    return sendError(res, err, err?.status || 500);
   }
 }

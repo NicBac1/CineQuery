@@ -1,14 +1,13 @@
+import '../loadEnv.js';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import dotenv from 'dotenv';
 import { parse } from 'csv-parse/sync';
 import Database from 'better-sqlite3';
 import OpenAI from 'openai';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-dotenv.config({ path: path.join(__dirname, '../../.env') });
 
 // Initialize NLP client
 const openai = new OpenAI({

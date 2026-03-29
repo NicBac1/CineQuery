@@ -1,4 +1,5 @@
 import TmdbService from '../services/TmdbService.js';
+import { sendError } from '../safeError.js';
 
 // Cache storage with timestamps (5 minutes = 300000 ms)
 const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
@@ -232,7 +233,7 @@ export async function getWatchProviders(req, res) {
     res.json({ ok: true, id: Number(id), ...providers });
   } catch (error) {
     console.error('Error in getWatchProviders:', error);
-    res.status(error.status || 500).json({ error: error.message || 'Failed to fetch watch providers' });
+    return sendError(res, error, error.status || 500);
   }
 }
 

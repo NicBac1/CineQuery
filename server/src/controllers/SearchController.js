@@ -1,4 +1,5 @@
 import TmdbService from '../services/TmdbService.js';
+import { sendError } from '../safeError.js';
 
 export async function search(req, res) {
   try {
@@ -12,8 +13,6 @@ export async function search(req, res) {
     return res.json({ movies });
   } catch (err) {
     console.error(err);
-    const status = err && err.status ? err.status : 500;
-    const message = err && err.message ? err.message : 'Internal Server Error';
-    return res.status(status).json({ error: message });
+    return sendError(res, err, err?.status || 500);
   }
 }

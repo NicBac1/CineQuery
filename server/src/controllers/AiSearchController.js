@@ -1,4 +1,5 @@
 import AiQueryService from '../services/AiQueryService.js';
+import { sendError } from '../safeError.js';
 
 export async function aiSearch(req, res) {
   try {
@@ -9,9 +10,7 @@ export async function aiSearch(req, res) {
     return res.json({ movies });
   } catch (err) {
     console.error(err);
-    const status = err?.status || 500;
-    const message = err?.message || 'Internal Server Error';
-    return res.status(status).json({ error: message });
+    return sendError(res, err, err?.status || 500);
   }
 }
 
