@@ -49,7 +49,7 @@ export default function MovieRecommendations({ onSelect }) {
 
         const favoriteIdsParam = favoriteIds.join(",");
         const res = await fetch(
-          `/api/movies/recommendations?favoriteIds=${encodeURIComponent(
+          `https://api.nickbacakos.dev/api/movies/recommendations?favoriteIds=${encodeURIComponent(
             favoriteIdsParam
           )}`
         );
@@ -102,7 +102,7 @@ export default function MovieRecommendations({ onSelect }) {
 
         const favoriteIdsParam = favoriteIds.join(",");
         const res = await fetch(
-          `/api/movies/ai-recommendations?favoriteIds=${encodeURIComponent(
+          `https://api.nickbacakos.dev/api/movies/ai-recommendations?favoriteIds=${encodeURIComponent(
             favoriteIdsParam
           )}`
         );

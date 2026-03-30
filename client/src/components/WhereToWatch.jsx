@@ -13,7 +13,7 @@ export default function WhereToWatch({ movieId }) {
     async function fetchProviders() {
       try {
         setLoading(true);
-        const res = await fetch(`/api/movies/${movieId}/providers?country=US`);
+        const res = await fetch(`https://api.nickbacakos.dev/api/movies/${movieId}/providers?country=US`);
         if (!res.ok) throw new Error('Failed to fetch streaming info');
         const data = await res.json();
         setProviders(data);

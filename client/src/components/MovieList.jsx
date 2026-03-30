@@ -64,9 +64,8 @@ export default function MovieList({ movies = [], onSelect }) {
       return
     }
     
-    // Always fetch full movie details with current language
     try {
-      const res = await fetch(`/api/movies/details/${movie.id}?lang=${language}`);
+      const res = await fetch(`https://api.nickbacakos.dev/api/movies/details/${movie.id}?lang=${language}`);
       if (res.ok) {
         const fullMovie = await res.json();
         setSelectedMovie(fullMovie)
@@ -140,7 +139,7 @@ export default function MovieList({ movies = [], onSelect }) {
     // Mark as loading so we don't re-fetch
     setPosterCache(prev => ({ ...prev, [movie.id]: false }));
     try {
-      const res = await fetch(`/api/movies/details/${movie.id}?lang=${language}`);
+      const res = await fetch(`https://api.nickbacakos.dev/api/movies/details/${movie.id}?lang=${language}`);
       if (res.ok) {
         const details = await res.json();
         const freshPoster = details.posterUrl

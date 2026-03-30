@@ -48,7 +48,7 @@ export default function MovieDetails({ movie, onClose }) {
       async function fetchMovieDetails() {
         try {
           // Add timestamp to prevent caching issues
-          const res = await fetch(`/api/movies/details/${movieId}?lang=${language}&t=${Date.now()}`);
+          const res = await fetch(`https://api.nickbacakos.dev/api/movies/details/${movieId}?lang=${language}&t=${Date.now()}`);
           if (res.ok) {
             const fullMovie = await res.json();
             setMovieData(fullMovie);
