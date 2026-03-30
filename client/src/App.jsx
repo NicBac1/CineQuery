@@ -30,7 +30,7 @@ function AppContent() {
     try {
       setLoading(true);
       setError('');
-      const res = await fetch(`/api/search?query=${encodeURIComponent(query)}&lang=${language}`);
+      const res = await fetch(`https://api.nickbacakos.dev/api/search?query=${encodeURIComponent(query)}&lang=${language}`);
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
         throw new Error(err.error || 'Request failed');
@@ -55,7 +55,7 @@ function AppContent() {
     try {
       setLoading(true);
       setError('');
-      const res = await fetch(`/api/ai-search?query=${encodeURIComponent(query)}&lang=${language}`);
+      const res = await fetch(`https://api.nickbacakos.dev/api/ai-search?query=${encodeURIComponent(query)}&lang=${language}`);
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
         throw new Error(err.error || 'Request failed');
