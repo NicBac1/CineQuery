@@ -254,7 +254,7 @@ function MovieCarouselRow({ title, fetchUrl, movies: providedMovies, onMovieSele
                 
                 // Always fetch full movie details to ensure we have complete data
                 try {
-                  const res = await fetch(`/api/movies/details/${movie.id}?lang=${language}`);
+                  const res = await fetch(`https://api.nickbacakos.dev/api/movies/details/${movie.id}?lang=${language}`);
                   if (res.ok) {
                     const fullMovie = await res.json();
                     setSelectedMovie(fullMovie);
